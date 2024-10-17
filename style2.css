@@ -1,0 +1,60 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: white;
+  display: flex; /* Flexbox for body to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 0; /* Padding to prevent content from touching the edges */
+  font-family: "Comic Sans MS", "ChalkboardSE-Regular", "Comic Neue", cursive;
+}
+#untitled {
+  display: block;
+}
+
+/* Styles for images on the third page */
+.third-page .relative-container {
+  position: relative; /* Establishes a containing block for absolutely positioned elements */
+  width: 100vw; /* Ensure it takes up the full width of the viewport */
+  height: 100vh; /* Ensure it takes up the full height of the viewport */
+}
+
+.third-page a {
+  position: absolute; /* Position links absolutely within the container */
+}
+
+.third-page .random-img {
+  width: 100px; /* Fixed width for each image */
+  height: 100px; /* Fixed height for each image */
+  object-fit: cover; /* Ensures the images cover their area */
+}
+
+/* Random placements */
+.third-page a:nth-of-type(1) {
+  top: 10%;
+  left: 20%;
+}
+
+.third-page a:nth-of-type(2) {
+  top: 70%;
+  left: 30%;
+}
+
+.third-page a:nth-of-type(3) {
+  top: 50%;
+  left: 60%;
+}
+
+.third-page a:nth-of-type(4) {
+  top: 20%;
+  left: 70%;
+}

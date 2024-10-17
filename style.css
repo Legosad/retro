@@ -1,0 +1,439 @@
+/* Global styles */
+@font-face {
+  font-family: "Times-New-Roman";
+  src: url("font/times-new-roman-pixel.ttf") format("truetype"),
+    url("font/times-new-roman-pixel.woff") format("woff");
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: white;
+  display: flex; /* Flexbox for body to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 0; /* Padding to prevent content from touching the edges */
+  font-family: "Comic Sans MS", "ChalkboardSE-Regular", "Comic Neue", cursive;
+  z-index: 0;
+}
+
+/* Styles specific to the portal page */
+body,
+html {
+  height: 100%;
+  margin-right: 0;
+  display: flex; /* Flexbox for body to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 0;
+  background-color: white;
+  font-family: "Comic Sans MS", "ChalkboardSE-Regular", "Comic Neue", cursive;
+}
+.hero {
+  overflow: hidden;
+}
+.centered-link {
+  position: absolute;
+  bottom: 10vh; /* Adjust as needed to position the image at the bottom */
+  left: 45vw;
+  width: auto;
+  height: auto;
+}
+
+.centered-link img {
+  display: block;
+  max-width: 50%;
+  max-height: 50vh;
+  margin: auto;
+  margin-top: 65vh; /* Additional margin to push the image down */
+  transform: scale(
+    0.85
+  ); /* Scales the image down to 85% of its original size */
+  transition: transform 0.3s ease;
+}
+
+/* Styles for the eye container and pupil */
+.eye-container {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 60px; /* Diameter of the area the pupil can move within */
+  height: 60px; /* Diameter of the area the pupil can move within */
+  overflow: visible; /* Make sure the pupil is not clipped */
+}
+
+.eye {
+  position: absolute;
+  z-index: 11;
+  width: 185px; /* Increased size of the eye image */
+  height: 185px; /* Increased size of the eye image */
+  top: -75px; /* Adjusted position to keep the pupil in the center */
+  left: -75px; /* Adjusted position to keep the pupil in the center */
+}
+
+.pupil {
+  position: absolute;
+  z-index: 12;
+  width: 25px; /* Size of the pupil */
+  height: 25px; /* Size of the pupil */
+  background-image: url("website_assets/sphere.jpg"); /* Path to the pupil image */
+  background-size: cover; /* Ensure the image covers the area */
+  border-radius: 50%;
+  /*transform: translate(-50%, -50%); /* Center the pupil initially */
+  transition: transform 250ms ease-in-out; /* Smooth and gradual transition for the transform property */
+}
+/* Hole */
+#hole.page-out.hidden {
+  display: none;
+}
+#hole.page-out {
+  animation: slideout 1s ease-in-out forwards;
+}
+@keyframes slideout {
+  from {
+    transform: translateY(0vh);
+    /* opacity: 1; */
+  }
+  to {
+    transform: translateY(-100vh);
+    /* opacity: 0; */
+  }
+}
+/* Home Hero */
+.home-page.hidden {
+  display: none;
+}
+.home-page {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 80%;
+}
+.home-page.page-in {
+  animation: slideIn 1s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.home-page .grid-container {
+  width: 45%;
+}
+@media screen and (max-width: 500px) {
+  .hero-hole .centered-link {
+    left: 35vw;
+  }
+  /* .home-page .grid-container {
+    width: 75vw;
+  } */
+  .home-page .grid-container .row {
+    grid-template-columns: repeat(4, 35px);
+  }
+}
+/* Styles specific to the home page */
+.grid-container {
+  display: grid;
+  gap: 60px; /* Space between rows */
+}
+@media screen and (max-width: 800px) {
+  .home-page .grid-container {
+    width: 100%;
+    max-width: 300px;
+    justify-content: flex-start;
+  }
+}
+.row {
+  display: grid;
+  gap: 60px; /* Space between items in a row */
+}
+
+.row:nth-child(1) {
+  grid-template-columns: repeat(4, 100px); /* Adjusted to 4 columns */
+}
+
+.row:nth-child(2) {
+  grid-template-columns: repeat(4, 100px); /* Maintain 4 columns */
+}
+
+.row:nth-child(3) {
+  grid-template-columns: 100px 300px; /* First cell 100px, second cell wider at 300px */
+}
+
+.row img,
+.row a img {
+  width: 100px; /* Fixed width for all images */
+  height: 100px; /* Fixed height for all images */
+  object-fit: cover; /* Ensures images cover the area without distorting aspect ratio */
+}
+
+.row a img {
+  transform: scale(0.75); /* Scales down linked images */
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.row p {
+  font-size: 42px; /* Adjust size as needed */
+  width: 800px; /* Allow text to expand to the width of its container */
+  margin-top: 15px;
+  margin-left: 12px;
+}
+
+/* Marquee styles for continuous text scrolling */
+.marquee {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  overflow: hidden;
+  background-color: #eabcff; /* Optional: adjust the background color if needed */
+  white-space: nowrap;
+  bottom: 0px; /* Adjust the vertical positioning as needed */
+  line-height: 30px; /* Match this to the height of the banner to center text vertically */
+  font-family: "Courier New", Courier, monospace; /* Set font to Courier New */
+  font-weight: bold;
+  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none; /* For Internet Explorer/Edge */
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 0%;
+  animation: marquee 90s linear infinite;
+  animation-delay: 0s;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-85%);
+  }
+}
+
+.marquee span:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 800px) {
+  .row img,
+  .row a img {
+    width: 70px; /* Adjusted width for smaller screens */
+    height: 70px; /* Adjusted height for smaller screens */
+  }
+  .row p {
+    font-size: 26px; /* Smaller font size for better fit */
+    width: 200px; /* Allow text to expand to the width of its container */
+  }
+  .grid-container {
+    gap: 50px; /* Adjusted gap for smaller screens */
+  }
+  .row {
+    gap: 40px; /* Adjusted gap for tighter column spacing */
+  }
+  .row:nth-child(1) {
+    grid-template-columns: repeat(
+      4,
+      50px
+    ); /* Adjusted to 4 columns for the first row */
+  }
+  .row:nth-child(2) {
+    grid-template-columns: repeat(
+      4,
+      50px
+    ); /* Maintain 4 columns for the second row */
+  }
+  .row:nth-child(3) {
+    grid-template-columns: 50px 150px; /* Adjust the column widths for the third row, making the second column wider */
+  }
+}
+
+/* Rainbow Text Animation */
+@keyframes rainbow-gradient {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.rainbow-text {
+  font-family: "Comic Sans MS", "ChalkboardSE-Regular", "Comic Neue", cursive;
+  font-size: 36px; /* Adjust size as needed */
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet,
+    red
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text; /* Added standard background-clip for compatibility */
+  color: transparent;
+  animation: rainbow-gradient 5s linear infinite;
+}
+/*Audio Page */
+.audio-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  height: 100vh;
+  position: relative;
+  font-family: sans-serif;
+}
+
+/* Password Container  */
+.audio-page #pass-div.hidden {
+  display: none;
+}
+.audio-page #pass-div {
+  position: fixed;
+  top: 25%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.audio-page #pass-div .pass-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+  width: 100%;
+  border: 1px solid #999;
+  border-radius: 5px;
+  background-color: #ebeef5;
+}
+
+.audio-page #pass-div .pass-container .image-input {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.audio-page #pass-div .pass-container .image-input .image-container {
+  width: 100%;
+  border: 1px solid #777;
+  padding: 0.5rem;
+  background-color: #fff;
+}
+.audio-page #pass-div .pass-container .image-input .image-container p {
+  text-align: right;
+  margin-bottom: 0;
+  color: blue;
+}
+.audio-page #pass-div .pass-container .image-input #pass {
+  width: 100%;
+  padding: 0.5rem;
+}
+.audio-page #pass-div .pass-container .image-input #incorrect-input,
+.audio-page #pass-div .pass-container .image-input #empty-input {
+  color: #ff0000;
+  text-align: left;
+  align-self: baseline;
+  margin: 5px 0;
+  display: none;
+}
+.audio-page #pass-div .pass-container p.not-visible {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+.audio-page #pass-div .pass-container p.not-visible span {
+  color: blue;
+}
+.audio-page #pass-div .pass-container .image-input .image-container img {
+  width: 100%;
+}
+.audio-page #pass-div button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  background-color: #4169e1;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Audio Container  */
+.audio-page .audio.hidden {
+  display: none;
+}
+.audio-page .audio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  top: 45%;
+  /* left: 50%; */
+}
+
+.audio-page .audio .download-link {
+  text-decoration: none;
+  color: white;
+  background-color: #4caf50;
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+.audio-page .audio .download-link:hover {
+  background-color: #45a049;
+}
+/*Bio Page */
+.bio-page {
+  display: flex;
+  margin: 0;
+  padding: 1rem 0;
+  height: 90vh;
+  width: 100%;
+  justify-content: flex-end;
+  font-family: sans-serif;
+}
+.bio {
+  display: flex;
+  max-width: 95vw;
+  margin: 0 auto;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.bio img {
+  width: 33%;
+  height: 100%;
+}
+.bio p {
+  font-family: "Times-New-Roman", sans-serif;
+  font-size: 2vw;
+  text-align: justify;
+  margin-top: 0;
+}

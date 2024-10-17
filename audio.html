@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio</title>
+    <link rel="stylesheet" href="style.css" /> 
+  </head>
+  <body class="audio-page">
+    <div id="pass-div" class="password">
+      <div class="pass-container">
+        <div class="image-input">
+          <div class="image-container">
+            <img src="./gallery/digital_noise.png" alt="" />
+            <p><span>&#8635</span> Refresh</p>
+          </div>
+          <input
+            type="text"
+            placeholder="Enter the text you see on the image"
+            name="pass"
+            id="pass"
+          />
+          <p id="empty-input">Password Required</p>
+          <p id="incorrect-input">Incorrect Password</p>
+        </div>
+        <p class="not-visible">Can't see the image? <span>Request an account</span></p>
+      </div>
+      <button id="audio-pass-submit" type="submit">Submit</button>
+    </div>
+    <div id="audio" class="audio hidden">
+      <audio src="./SECRET_TRACK/Windows 44.wav" controls>
+        Your Browser does not support the current audio format
+      </audio>
+      <a href="./SECRET_TRACK/Windows 44.wav" download class="download-link"
+        >Download Audio</a
+      >
+    </div>
+    <script src="./audio.js"></script>
+  </body>
+</html>
